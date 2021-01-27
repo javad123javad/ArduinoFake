@@ -1,0 +1,25 @@
+From fb3ee070905ac4f7fa4ee1d769ac7f874cfa5820 Mon Sep 17 00:00:00 2001
+From: Javad Rahimi <javad321javad@gmail.com>
+Date: Wed, 27 Jan 2021 13:10:26 +0330
+Subject: [PATCH] Null Derefrencing fixed.
+
+---
+ src/fakeit/fakeit.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fakeit/fakeit.hpp b/src/fakeit/fakeit.hpp
+index 6a2884e..8307714 100644
+--- a/src/fakeit/fakeit.hpp
++++ b/src/fakeit/fakeit.hpp
+@@ -6189,7 +6189,7 @@ namespace fakeit {
+     struct DefaultValue<C, typename std::enable_if<!is_constructible_type<C>::value>::type> {
+         static C &value() {
+             if (std::is_reference<C>::value) {
+-                typename naked_type<C>::type *ptr = nullptr;
++                typename naked_type<C>::type *ptr = NULL;
+                 return *ptr;
+             }
+ 
+-- 
+2.25.1
+
